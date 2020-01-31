@@ -36,21 +36,24 @@ public class Catastrophe : ICatastrophe
         Type = type;
         Timer = 60.0F;
 
+        getMoinsCatastrophe();
+        getPlusCatastrophe();
     }
 
     public void StopCatastrophe()
     {
         IsActive = false;
         Timer = 0;
+        Type = ECatastrophe.None;
     }
 
     #endregion
 
     #region Private Methods
 
-    private void getMoinsCatastrophe(ECatastrophe typeCurrent)
+    private void getMoinsCatastrophe()
     {
-        switch (typeCurrent)
+        switch (Type)
         {
             case ECatastrophe.Feu:
                 MoinsCatastrophe = ECatastrophe.Secheresse;
@@ -73,9 +76,9 @@ public class Catastrophe : ICatastrophe
         }
     }
 
-    private void getPlusCatastrophe(ECatastrophe typeCurrent)
+    private void getPlusCatastrophe()
     {
-        switch (typeCurrent)
+        switch (Type)
         {
             case ECatastrophe.Feu:
                 PlusCatastrophe = ECatastrophe.Inondation;
