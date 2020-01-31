@@ -22,12 +22,12 @@ public class Catastrophe : ICatastrophe
 
     public void DeclencheMoinsCatastrophe()
     {
-
+        LaunchCatastrophe(MoinsCatastrophe);
     }
 
     public void DeclenchePlusCatastrophe()
     {
-
+        LaunchCatastrophe(PlusCatastrophe);
     }
 
     public void LaunchCatastrophe(ECatastrophe type)
@@ -45,6 +45,8 @@ public class Catastrophe : ICatastrophe
         IsActive = false;
         Timer = 0;
         Type = ECatastrophe.None;
+        MoinsCatastrophe = ECatastrophe.None;
+        PlusCatastrophe = ECatastrophe.None;
     }
 
     #endregion
