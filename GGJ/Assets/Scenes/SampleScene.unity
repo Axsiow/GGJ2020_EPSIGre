@@ -823,7 +823,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57a26e6e8051a4b4098be1b57a52a415, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 30
+  speed: 50.1
   score: {fileID: 1543021730}
   scoreResulFinal: {fileID: 1103719378}
   mainSlider: {fileID: 1665348104}

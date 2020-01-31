@@ -53,6 +53,10 @@ public class sliderScript : MonoBehaviour
         {
             valeur = 1000;
         }
+        else if(valeur < 0)
+        {
+            valeur = 0;
+        }
 
         if (sliderStop == false)
         {
