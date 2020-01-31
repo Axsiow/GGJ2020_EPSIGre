@@ -10,6 +10,7 @@ public class Zones : MonoBehaviour
     public ICatastrophe CatastrophesList;
     public float TimeBetweenCatastrophe;
     public float NextTimeCatastrophes;
+    public GameObject SliderPrefab;
 
     private ICatastrophe CurrentCatastrophe;
     private float NextTimeCatastropheDamage;
