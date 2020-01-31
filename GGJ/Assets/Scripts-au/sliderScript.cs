@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class sliderScript : MonoBehaviour
 {
-    private int valeur;
+    private float valeur;
+    public float speed;
     private bool pasValeur;
     private bool sliderStop;
     public Text score;
@@ -25,10 +26,37 @@ public class sliderScript : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        if(sliderStop == false)
+    {   
+        if (Input.GetKeyDown("space") || Input.GetMouseButtonDown(0))
         {
-            if (valeur >= 100)
+            score.text = "Score : " + valeur;
+            sliderStop = true;
+
+            if(valeur >= 600)
+            {
+                scoreResulFinal.text = "Trop haut !";
+            }
+            else if(valeur < 500)
+            {
+                scoreResulFinal.text = "Trop bas !";
+            }
+            else
+            {
+                scoreResulFinal.text = "Ok !";
+            }
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if(valeur > 1000)
+        {
+            valeur = 1000;
+        }
+
+        if (sliderStop == false)
+        {
+            if (valeur >= 1000)
             {
                 pasValeur = false;
             }
@@ -39,33 +67,14 @@ public class sliderScript : MonoBehaviour
 
             if (pasValeur == true)
             {
-                valeur++;
+                valeur = valeur + speed;
             }
             else
             {
-                valeur--;
+                valeur = valeur - speed;
             }
 
             mainSlider.value = valeur;
         }
-        
-        if (Input.GetKeyDown("space") || Input.GetMouseButtonDown(0))
-        {
-            score.text = "Score : " + valeur;
-            sliderStop = true;
-
-            if(valeur >= 60)
-            {
-                scoreResulFinal.text = "Trop haut !";
-            }
-            else if(valeur < 50)
-            {
-                scoreResulFinal.text = "Trop bas !";
-            }
-            else
-            {
-                scoreResulFinal.text = "Ok !";
-            }
-        }
-    } 
+    }
 }
