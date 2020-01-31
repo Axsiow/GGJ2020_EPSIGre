@@ -39,7 +39,7 @@ public class Zones : MonoBehaviour
     public void StartCatastrophe()
     {
         CurrentCatastrophe = CatastrophesList[Random.Range(0, CatastrophesList.Count)];
-        CurrentCatastrophe.LaunchCatastrophe();
+        CurrentCatastrophe.LaunchCatastrophe(CurrentCatastrophe.Type);
         NextTimeCatastropheDamage = Time.time + CurrentCatastrophe.Timer;
     }
     public void TakeDamage()
