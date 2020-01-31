@@ -41,7 +41,7 @@ public class Zones : MonoBehaviour
     public void StartCatastrophe()
     {
         List<ECatastrophe> EnumValues = Enum.GetValues(typeof(ECatastrophe)).Cast<ECatastrophe>().ToList();
-        CurrentCatastrophe.LaunchCatastrophe(EnumValues[UnityEngine.Random.Range(0, EnumValues.Count)]);
+        CurrentCatastrophe.LaunchCatastrophe(EnumValues[UnityEngine.Random.Range(1, EnumValues.Count)]);
         NextTimeCatastropheDamage = Time.time + CurrentCatastrophe.Timer;
     }
     public void TakeDamage()
