@@ -14,7 +14,7 @@ public interface ICatastrophe
 
     float Timer { get; set; }
 
-    void LaunchCatastrophe();
+    void LaunchCatastrophe(ECatastrophe type);
 
     void StopCatastrophe();
 
