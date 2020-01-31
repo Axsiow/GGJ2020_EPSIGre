@@ -1,18 +1,42 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using System;
 
-public class Catastrophe : MonoBehaviour
+public class Catastrophe : ICatastrophe
 {
-    // Start is called before the first frame update
-    void Start()
+    public ECatastrophe Type { get; set; }
+
+    public bool IsActive { get; set; }
+
+    public ECatastrophe MoinsCatastrophe { get; set; }
+
+    public ECatastrophe PlusCatastrophe { get; set; }
+
+    public float Timer { get; set; }
+
+    public void DeclencheMoinsCatastrophe()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void DeclenchePlusCatastrophe()
     {
         
+    }
+
+    public void LaunchCatastrophe()
+    {
+        Random random = new Random();
+        var type = random.Next(0,2);
+        Type = (ECatastrophe)type;
+
+        Timer = 60.0F;
+
+        IsActive = true;
+    }
+
+    public void StopCatastrophe()
+    {
+        IsActive = false;
     }
 }

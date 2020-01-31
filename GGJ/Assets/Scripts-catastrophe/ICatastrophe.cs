@@ -6,6 +6,8 @@ public interface ICatastrophe
 {
     ECatastrophe Type { get; set; }
 
+    bool IsActive { get; set; }
+
     ECatastrophe MoinsCatastrophe { get; set; }
 
     ECatastrophe PlusCatastrophe { get; set; }
