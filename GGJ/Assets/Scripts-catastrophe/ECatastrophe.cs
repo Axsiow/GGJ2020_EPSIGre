@@ -5,6 +5,9 @@ using UnityEngine;
 public enum ECatastrophe
 {
     Feu,
+    Secheresse,
     Inondation,
-    Tornade
+    Tornade,
+    Glaciation,
+    Typhon
 }
