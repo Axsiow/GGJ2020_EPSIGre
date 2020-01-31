@@ -10,7 +10,7 @@ public class Zones : MonoBehaviour
     public float NextTimeCatastrophes;
 
     private ICatastrophe CurrentCatastrophe;
-    private float TimeCatastropheEnd;
+    private float NextTimeCatastropheDamage;
 
     private void Start()
     {
@@ -21,15 +21,18 @@ public class Zones : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (TimeBetweenCatastrophe <= Time.time && CurrentCatastrophe == null)
+        if (TimeBetweenCatastrophe <= Time.time && CurrentCatastrophe.IsActive == false)
         {
             StartCatastrophe();
         }
-
-        if (TimeCatastropheEnd <= Time.time && CurrentCatastrophe != null)
+        if (CurrentCatastrophe != null)
         {
-            TakeDamage();
+            if (NextTimeCatastropheDamage <= Time.time && CurrentCatastrophe.IsActive)
+            {
+                TakeDamage();
+            }
         }
+        
     }
 
 
@@ -37,11 +40,10 @@ public class Zones : MonoBehaviour
     {
         CurrentCatastrophe = CatastrophesList[Random.Range(0, CatastrophesList.Count)];
         CurrentCatastrophe.LaunchCatastrophe();
-        TimeCatastropheEnd = Time.time + CurrentCatastrophe.Timer;
+        NextTimeCatastropheDamage = Time.time + CurrentCatastrophe.Timer;
     }
     public void TakeDamage()
     {
-        CurrentCatastrophe.StopCatastrophe();
         //TODO : make the bigger entity (holding the hp) taking damage
     }
 }
