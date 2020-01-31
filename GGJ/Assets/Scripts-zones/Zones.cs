@@ -1,11 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Zones : MonoBehaviour
 {
 
-    public List<ICatastrophe> CatastrophesList;
+    public ICatastrophe CatastrophesList;
     public float TimeBetweenCatastrophe;
     public float NextTimeCatastrophes;
 
@@ -18,7 +20,7 @@ public class Zones : MonoBehaviour
         NextTimeCatastrophes = Time.time + TimeBetweenCatastrophe;
     }
 
-
+    
     void FixedUpdate()
     {
         if (TimeBetweenCatastrophe <= Time.time && CurrentCatastrophe.IsActive == false)
@@ -38,8 +40,8 @@ public class Zones : MonoBehaviour
 
     public void StartCatastrophe()
     {
-        CurrentCatastrophe = CatastrophesList[Random.Range(0, CatastrophesList.Count)];
-        CurrentCatastrophe.LaunchCatastrophe(CurrentCatastrophe.Type);
+        List<ECatastrophe> EnumValues = Enum.GetValues(typeof(ECatastrophe)).Cast<ECatastrophe>().ToList();
+        CurrentCatastrophe.LaunchCatastrophe(EnumValues[UnityEngine.Random.Range(0, EnumValues.Count)]);
         NextTimeCatastropheDamage = Time.time + CurrentCatastrophe.Timer;
     }
     public void TakeDamage()
