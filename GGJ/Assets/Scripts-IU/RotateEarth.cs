@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// Script qui fait faire tourner la terre sur elle même automatiquement
+// Script qui fait faire tourner la terre sur elle même automatiquement.
 
 public class RotateEarth : MonoBehaviour {
 
