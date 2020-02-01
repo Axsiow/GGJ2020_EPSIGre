@@ -33,7 +33,10 @@ public class Zones : MonoBehaviour
         
     }
 
-
+    private void OnMouseDown()
+    {
+        Debug.Log("test");
+    }
     public void StartCatastrophe()
     {
         List<ECatastrophe> EnumValues = Enum.GetValues(typeof(ECatastrophe)).Cast<ECatastrophe>().ToList();
