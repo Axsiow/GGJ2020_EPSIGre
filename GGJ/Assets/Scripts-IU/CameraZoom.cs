@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CameraZoom : MonoBehaviour {
@@ -8,13 +9,14 @@ public class CameraZoom : MonoBehaviour {
     public GameObject Planete;
     public float distanceMax;
     public float zoomSpeed;
+    public Vector3 positionCamera;
 
     private float[] distances = new float[32];
     private Vector3 moveDirection = Vector3.zero;
 
     // Use this for initialization
     void Start () {
-
+        positionCamera = transform.position;
     }
 
     // Update is called once per frame
@@ -60,6 +62,10 @@ public class CameraZoom : MonoBehaviour {
                         };
                         transform.Translate(vector, Space.Self);
                         Planete.GetComponent<EarthRotate>().IsRotating = false;
+
+                        var slider = Planete.GetComponentsInChildren<Zones>().First(x => x.gameObject.name == nameObject).SliderPrefab;
+                        slider.SetActive(true);
+                        slider.GetComponent<sliderScript>().SetUp();
                     }
                 }
             }
