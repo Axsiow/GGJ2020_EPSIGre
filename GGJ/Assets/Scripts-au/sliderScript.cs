@@ -20,6 +20,8 @@ public class sliderScript : MonoBehaviour
     public Slider hautSlider;
     public Slider basSlider;
 
+    private Catastrophe cata = new Catastrophe();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,10 +53,12 @@ public class sliderScript : MonoBehaviour
             if(valeur >= borneHaut)
             {
                 scoreResulFinal.text = "Trop haut !";
+                cata.DeclenchePlusCatastrophe();
             }
             else if(valeur < borneBas)
             {
                 scoreResulFinal.text = "Trop bas !";
+                cata.DeclencheMoinsCatastrophe();
             }
             else
             {

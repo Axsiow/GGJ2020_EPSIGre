@@ -306,6 +306,12 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 916581863046392530, guid: 1885272d02befb3429e46bfb5a828167,
+        type: 3}
+      propertyPath: SliderPrefab
+      value: 
+      objectReference: {fileID: 4318106708986112474, guid: 215e6cce709b84b42861b1a1d1a0c2f7,
+        type: 3}
     - target: {fileID: 1203259381541923434, guid: 1885272d02befb3429e46bfb5a828167,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -316,11 +322,29 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3135271918359072025, guid: 1885272d02befb3429e46bfb5a828167,
+        type: 3}
+      propertyPath: SliderPrefab
+      value: 
+      objectReference: {fileID: 4318106708986112474, guid: 215e6cce709b84b42861b1a1d1a0c2f7,
+        type: 3}
     - target: {fileID: 4720178176635447733, guid: 1885272d02befb3429e46bfb5a828167,
         type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6030739311900306971, guid: 1885272d02befb3429e46bfb5a828167,
+        type: 3}
+      propertyPath: SliderPrefab
+      value: 
+      objectReference: {fileID: 4318106708986112474, guid: 215e6cce709b84b42861b1a1d1a0c2f7,
+        type: 3}
+    - target: {fileID: 6222197754936628442, guid: 1885272d02befb3429e46bfb5a828167,
+        type: 3}
+      propertyPath: SliderPrefab
+      value: 
+      objectReference: {fileID: 4318106708986112474, guid: 215e6cce709b84b42861b1a1d1a0c2f7,
+        type: 3}
     - target: {fileID: 6662581179350786531, guid: 1885272d02befb3429e46bfb5a828167,
         type: 3}
       propertyPath: m_Enabled
