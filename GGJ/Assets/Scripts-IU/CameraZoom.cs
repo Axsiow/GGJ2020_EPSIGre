@@ -62,10 +62,10 @@ public class CameraZoom : MonoBehaviour {
                         };
                         transform.Translate(vector, Space.Self);
                         Planete.GetComponent<EarthRotate>().IsRotating = false;
-
-                        var slider = Planete.GetComponentsInChildren<Zones>().First(x => x.gameObject.name == nameObject).SliderPrefab;
+                        var te = Planete.GetComponentsInChildren<Zones>().First(x => x.gameObject.name == nameObject);
+                        var slider = te.SliderPrefab;
                         slider.SetActive(true);
-                        slider.GetComponent<sliderScript>().SetUp();
+                        slider.GetComponent<sliderScript>().SetUp(colliderObject.GetComponent<Zones>().CurrentCatastrophe);
                     }
                 }
             }

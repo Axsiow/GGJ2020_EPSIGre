@@ -25,12 +25,6 @@ public class sliderScript : MonoBehaviour
 
     public Catastrophe cata;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        SetUp();
-    }
-
     // Update is called once per frame
     void Update()
     {   
@@ -62,8 +56,9 @@ public class sliderScript : MonoBehaviour
         }
     }
 
-    public void SetUp()
+    public void SetUp(Catastrophe catastrophe)
     {
+        cata = catastrophe;
         valeur = 0;
         mainSlider.value = valeur;
         pasValeur = true;
