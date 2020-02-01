@@ -67,7 +67,6 @@ public class Catastrophe : MonoBehaviour
     {
         IsActive = false;
         Timer = 0;
-        Type = ECatastrophe.None;
         MoinsCatastrophe = ECatastrophe.None;
         PlusCatastrophe = ECatastrophe.None;
 
@@ -111,8 +110,20 @@ public class Catastrophe : MonoBehaviour
     {
         switch (Type)
         {
-            default:
+            case ECatastrophe.Feu:
+                MoinsCatastrophe = ECatastrophe.Secheresse;
+                break;
+            case ECatastrophe.Tornade:
+                MoinsCatastrophe = ECatastrophe.Glaciation;
+                break;
+            case ECatastrophe.Apocalypse:
+                MoinsCatastrophe = ECatastrophe.Tornade;
+                break;
+            case ECatastrophe.Secheresse:
                 MoinsCatastrophe = ECatastrophe.Feu;
+                break;
+            case ECatastrophe.Glaciation:
+                MoinsCatastrophe = ECatastrophe.Apocalypse;
                 break;
         }
     }
@@ -121,8 +132,20 @@ public class Catastrophe : MonoBehaviour
     {
         switch (Type)
         {
-            default:
+            case ECatastrophe.Feu:
+                PlusCatastrophe = ECatastrophe.Glaciation;
+                break;
+            case ECatastrophe.Tornade:
+                PlusCatastrophe = ECatastrophe.Apocalypse;
+                break;
+            case ECatastrophe.Apocalypse:
+                PlusCatastrophe = ECatastrophe.Secheresse;
+                break;
+            case ECatastrophe.Secheresse:
                 PlusCatastrophe = ECatastrophe.Feu;
+                break;
+            case ECatastrophe.Glaciation:
+                PlusCatastrophe = ECatastrophe.Tornade;
                 break;
         }
     }
