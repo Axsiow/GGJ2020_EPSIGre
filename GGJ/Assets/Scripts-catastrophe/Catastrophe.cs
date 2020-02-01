@@ -10,6 +10,10 @@ public class Catastrophe : MonoBehaviour, ICatastrophe
 
     public ECatastrophe Type { get; set; }
 
+    public GameObject MyGameObject;
+
+    public MeshRenderer MeshRenderer;
+
     public bool IsActive { get; set; }
 
     public ECatastrophe MoinsCatastrophe { get; set; }
@@ -18,9 +22,17 @@ public class Catastrophe : MonoBehaviour, ICatastrophe
     
     public float Timer { get; set; }
 
+    private List<GameObject> Prefabs { get; set; }
+
     #endregion
 
     #region Public Methods
+
+    public void Start()
+    {
+        MeshRenderer = MyGameObject.GetComponent<MeshRenderer>();
+        Prefabs = new List<GameObject>();
+    }
 
     public void DeclencheMoinsCatastrophe()
     {
@@ -50,6 +62,11 @@ public class Catastrophe : MonoBehaviour, ICatastrophe
         Type = ECatastrophe.None;
         MoinsCatastrophe = ECatastrophe.None;
         PlusCatastrophe = ECatastrophe.None;
+
+        foreach (var prefab in Prefabs)
+        {
+            Destroy(prefab);
+        }
     }
 
     #endregion
@@ -65,20 +82,23 @@ public class Catastrophe : MonoBehaviour, ICatastrophe
                 PlayPrefabs(gameObject1);
                 break;
             case ECatastrophe.Inondation:
-                Texture texture2 = AssetDatabase.LoadAssetAtPath<Material>("Imports-catastrophes/Water.mat").mainTexture;
-                GetComponent<Material>().mainTexture = texture2;
+                Material material2 = AssetDatabase.LoadAssetAtPath<Material>("Assets/Imports-catastrophes/Resources/Water.mat");
+                MeshRenderer.enabled = true;
+                MeshRenderer.material = material2;
                 break;
             case ECatastrophe.Tornade:
                 GameObject gameObject2 = Resources.Load("Tornade1") as GameObject;
                 PlayPrefabs(gameObject2);
                 break;
             case ECatastrophe.Secheresse:
-                Texture texture4 = AssetDatabase.LoadAssetAtPath<Material>("Imports-catastrophes/Sand.mat").mainTexture;
-                GetComponent<Material>().mainTexture = texture4;
+                Material material4 = AssetDatabase.LoadAssetAtPath<Material>("Assets/Imports-catastrophes/Resources/Sand.mat");
+                MeshRenderer.enabled = true;
+                MeshRenderer.material = material4;
                 break;
             case ECatastrophe.Glaciation:
-                Texture texture5 = AssetDatabase.LoadAssetAtPath<Material>("Imports-catastrophes/Ice.mat").mainTexture;
-                GetComponent<Material>().mainTexture = texture5;
+                Material material5 = AssetDatabase.LoadAssetAtPath<Material>("Assets/Imports-catastrophes/Resources/Ice1.mat");
+                MeshRenderer.enabled = true;
+                MeshRenderer.material = material5;
                 break;
             case ECatastrophe.Typhon:
                 GameObject gameObject3 = Resources.Load("Tornade2") as GameObject;
@@ -89,7 +109,28 @@ public class Catastrophe : MonoBehaviour, ICatastrophe
 
     private void PlayPrefabs(GameObject prefab)
     {
-        // implements
+        Vector3 vector3 = new Vector3(GetComponent<Transform>().position.x, GetComponent<Transform>().position.y, GetComponent<Transform>().position.z);
+        vector3.x += 2;
+        Prefabs.Add(Instantiate(prefab, vector3, Quaternion.identity));
+        vector3.x += 2;
+        Prefabs.Add(Instantiate(prefab, vector3, Quaternion.identity));
+        vector3.x += 2;
+        Prefabs.Add(Instantiate(prefab, vector3, Quaternion.identity));
+        vector3.x += 2;
+        Prefabs.Add(Instantiate(prefab, vector3, Quaternion.identity));
+        vector3.x += 2;
+        Prefabs.Add(Instantiate(prefab, vector3, Quaternion.identity));
+        vector3.x += 2;
+        Prefabs.Add(Instantiate(prefab, vector3, Quaternion.identity));
+        vector3.x += 2;
+        Prefabs.Add(Instantiate(prefab, vector3, Quaternion.identity));
+        vector3.x += 2;
+        Prefabs.Add(Instantiate(prefab, vector3, Quaternion.identity));
+        vector3.x += 2;
+        Prefabs.Add(Instantiate(prefab, vector3, Quaternion.identity));
+        vector3.x += 2;
+        Prefabs.Add(Instantiate(prefab, vector3, Quaternion.identity));
+        vector3.x += 2;
     }
 
     private void getMoinsCatastrophe()

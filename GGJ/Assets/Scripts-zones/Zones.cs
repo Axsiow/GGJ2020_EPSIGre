@@ -11,19 +11,18 @@ public class Zones : MonoBehaviour
     public float TimeBetweenCatastrophe;
     public float NextTimeCatastrophes;
 
-    private ICatastrophe CurrentCatastrophe;
+    public Catastrophe CurrentCatastrophe;
     private float NextTimeCatastropheDamage;
 
     private void Start()
     {
-        CurrentCatastrophe = null;
         NextTimeCatastrophes = Time.time + TimeBetweenCatastrophe;
     }
 
     
     void FixedUpdate()
     {
-        if (TimeBetweenCatastrophe <= Time.time && CurrentCatastrophe.IsActive == false)
+        if (TimeBetweenCatastrophe <= Time.time && CurrentCatastrophe.IsActive==false)
         {
             StartCatastrophe();
         }

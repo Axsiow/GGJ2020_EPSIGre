@@ -4,9 +4,10 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Ice2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Ice
   m_Shader: {fileID: 4800000, guid: 6266f318fd2ac0c4da50a5be917e1e01, type: 3}
   m_ShaderKeywords: _EMISSION _NORMALMAP
   m_LightmapFlags: 5
@@ -39,7 +40,7 @@ Material:
         m_Scale: {x: 1.5, y: 1.5}
         m_Offset: {x: 0, y: 0}
     - _Icescratches:
-        m_Texture: {fileID: 2800000, guid: bb03ba1572c5864498c5f29b789d1b28, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -55,11 +56,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Noise01Bump:
-        m_Texture: {fileID: 2800000, guid: 494d6fce52f2ca746ae50546ef9e6a38, type: 3}
+        m_Texture: {fileID: 2800000, guid: 1d48257acbdaa4a43888444f8fd6dfed, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Noise1:
-        m_Texture: {fileID: 2800000, guid: 241f3cbfd478ce448bff3f8b48bd34b4, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -104,7 +105,7 @@ Material:
     - __dirty: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _DeepCcolor: {r: 0.80833924, g: 0.9192888, b: 0.990566, a: 0}
+    - _DeepCcolor: {r: 0.8078432, g: 0.9176471, b: 0.9921569, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _MainColor: {r: 0.6775098, g: 0.7396035, b: 0.8207547, a: 0}
-    - _Surfacecolor: {r: 0.16981131, g: 0.16981131, b: 0.16981131, a: 0}
+    - _Surfacecolor: {r: 0.8078432, g: 0.9176471, b: 0.9921569, a: 1}
