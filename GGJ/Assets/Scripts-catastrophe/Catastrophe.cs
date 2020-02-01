@@ -55,7 +55,7 @@ public class Catastrophe : MonoBehaviour
 
         IsActive = true;
         Type = type;
-        TimerResolution = 60.0F;
+        TimerResolution = 30.0F;
         TimerDegats = 90.0F;
 
         getMoinsCatastrophe();

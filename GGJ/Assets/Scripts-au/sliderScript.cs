@@ -23,6 +23,7 @@ public class sliderScript : MonoBehaviour
     public Slider hautSlider;
     public Slider basSlider;
 
+    public float TimeToFinish;
     public Catastrophe cata;
 
     // Update is called once per frame
@@ -35,17 +36,14 @@ public class sliderScript : MonoBehaviour
 
             if(valeur >= borneHaut)
             {
-                scoreResulFinal.text = "Trop haut !";
                 cata.DeclenchePlusCatastrophe();
             }
             else if(valeur < borneBas)
             {
-                scoreResulFinal.text = "Trop bas !";
                 cata.DeclencheMoinsCatastrophe();
             }
             else
             {
-                scoreResulFinal.text = "Ok !";
                 cata.StopCatastrophe();
             }
 
@@ -73,10 +71,9 @@ public class sliderScript : MonoBehaviour
         borneBas = Random.Range(10.0f, 790.0f);
         borneHaut = borneBas + bornePas;
 
+        TimeToFinish = Time.time + cata.TimerResolution;
         hautSlider.value = borneHaut;
         basSlider.value = borneBas;
-        timerCata = 600;
-        timer.text = "Timer :" + timerCata;
     }
 
     void FixedUpdate()
@@ -89,14 +86,23 @@ public class sliderScript : MonoBehaviour
         {
             valeur = 0;
         }
-
-        timerCata = timerCata - 1;
-        timer.text = "Timer :" + timerCata;
-        if (timerCata <= 0)
+        if (TimeToFinish <= Time.time)
         {
+            // loose
+            var camera = Camera.main.GetComponent<CameraZoom>();
+            camera.transform.position = camera.positionCamera;
+            camera.Planete.GetComponent<EarthRotate>().IsRotating = true;
+            camera.Planete.GetComponent<EarthRotateMouse>().IsFocus = false;
+            gameObject.SetActive(false);
+
             sliderStop = true;
             cata.DeclenchePlusCatastrophe();
+            TimeToFinish = Time.time + cata.TimerResolution;
+
         }
+
+        timer.text = (int)((TimeToFinish - Time.time) / 60) + " min " + (int)((TimeToFinish - Time.time) % 60) + " sec";
+
 
         if (sliderStop == false)
         {
