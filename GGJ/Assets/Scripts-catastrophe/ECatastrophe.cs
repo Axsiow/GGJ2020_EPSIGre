@@ -6,6 +6,8 @@ public enum ECatastrophe
 {
     None,
     Feu,
-    Inondation,
-    Tornade
+    Tornade,
+    Apocalypse,
+    Secheresse,
+    Glaciation
 }

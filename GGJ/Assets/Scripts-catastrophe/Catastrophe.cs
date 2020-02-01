@@ -78,32 +78,40 @@ public class Catastrophe : MonoBehaviour, ICatastrophe
         switch (Type)
         {
             case ECatastrophe.Feu:
-                GameObject gameObject1 = Resources.Load("Fire") as GameObject;
-                PlayPrefabs(gameObject1);
-                break;
-            case ECatastrophe.Inondation:
-                GameObject gameObject5 = Resources.Load("Rain1") as GameObject;
-                PlayPrefabs(gameObject5);
+                Sprite sprite1 = Resources.Load<Sprite>("feu");
+                GetComponent<SpriteRenderer>().sprite = sprite1;
                 break;
             case ECatastrophe.Tornade:
-                GameObject gameObject2 = Resources.Load("Tornade1") as GameObject;
-                PlayPrefabs(gameObject2);
+                Sprite sprite2 = Resources.Load<Sprite>("tornade");
+                GetComponent<SpriteRenderer>().sprite = sprite2;
+                break;
+            case ECatastrophe.Apocalypse:
+                Sprite sprite3 = Resources.Load<Sprite>("apocalypse");
+                GetComponent<SpriteRenderer>().sprite = sprite3;
+                break;
+            case ECatastrophe.Secheresse:
+                Sprite sprite4 = Resources.Load<Sprite>("secheresse");
+                GetComponent<SpriteRenderer>().sprite = sprite4;
+                break;
+            case ECatastrophe.Glaciation:
+                Sprite sprite5 = Resources.Load<Sprite>("neige");
+                GetComponent<SpriteRenderer>().sprite = sprite5;
                 break;
         }
     }
 
-    private void PlayPrefabs(GameObject prefab)
-    {
-        Vector3 vector3 = new Vector3(MeshRenderer.bounds.center.x, MeshRenderer.bounds.center.y, MeshRenderer.bounds.center.z );
-        GameObject loul = Instantiate(prefab, vector3, Quaternion.identity);
-        loul.transform.eulerAngles = new Vector3(
-            loul.transform.eulerAngles.x + 90,
-            loul.transform.eulerAngles.y,
-            loul.transform.eulerAngles.z
-        );
-        loul.transform.SetParent(transform);
-        Prefabs.Add(loul);
-    }
+    //private void PlayPrefabs(GameObject prefab)
+    //{
+    //    Vector3 vector3 = new Vector3(MeshRenderer.bounds.center.x, MeshRenderer.bounds.center.y, MeshRenderer.bounds.center.z );
+    //    GameObject loul = Instantiate(prefab, vector3, Quaternion.identity);
+    //    loul.transform.eulerAngles = new Vector3(
+    //        loul.transform.eulerAngles.x + 90,
+    //        loul.transform.eulerAngles.y,
+    //        loul.transform.eulerAngles.z
+    //    );
+    //    loul.transform.SetParent(transform);
+    //    Prefabs.Add(loul);
+    //}
 
     private void getMoinsCatastrophe()
     {
@@ -112,11 +120,8 @@ public class Catastrophe : MonoBehaviour, ICatastrophe
             case ECatastrophe.Feu:
                 MoinsCatastrophe = ECatastrophe.Feu;
                 break;
-            case ECatastrophe.Inondation:
-                MoinsCatastrophe = ECatastrophe.Tornade;
-                break;
             case ECatastrophe.Tornade:
-                MoinsCatastrophe = ECatastrophe.Inondation;
+                MoinsCatastrophe = ECatastrophe.Feu;
                 break;
         }
     }
@@ -126,13 +131,10 @@ public class Catastrophe : MonoBehaviour, ICatastrophe
         switch (Type)
         {
             case ECatastrophe.Feu:
-                PlusCatastrophe = ECatastrophe.Inondation;
-                break;
-            case ECatastrophe.Inondation:
-                PlusCatastrophe = ECatastrophe.Feu;
+                PlusCatastrophe = ECatastrophe.Tornade;
                 break;
             case ECatastrophe.Tornade:
-                PlusCatastrophe = ECatastrophe.Inondation;
+                PlusCatastrophe = ECatastrophe.Feu;
                 break;
         }
     }
