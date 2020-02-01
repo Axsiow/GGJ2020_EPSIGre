@@ -22,7 +22,9 @@ public class Catastrophe : MonoBehaviour
 
     private Zones Zone;
     
-    public float Timer { get; set; }
+    public float TimerResolution { get; set; }
+
+    public float TimerDegats { get; set; }
 
     #endregion
 
@@ -34,6 +36,7 @@ public class Catastrophe : MonoBehaviour
         StopCatastrophe();
         getMoinsCatastrophe();
         getPlusCatastrophe();
+        Zone.TakeDamage();
         LaunchCatastrophe(MoinsCatastrophe, Zone);
     }
 
@@ -42,6 +45,7 @@ public class Catastrophe : MonoBehaviour
         StopCatastrophe();
         getMoinsCatastrophe();
         getPlusCatastrophe();
+        Zone.TakeDamage();
         LaunchCatastrophe(PlusCatastrophe, Zone);
     }
 
@@ -51,7 +55,8 @@ public class Catastrophe : MonoBehaviour
 
         IsActive = true;
         Type = type;
-        Timer = 60.0F;
+        TimerResolution = 60.0F;
+        TimerDegats = 90.0F;
 
         getMoinsCatastrophe();
         getPlusCatastrophe();
@@ -61,7 +66,7 @@ public class Catastrophe : MonoBehaviour
     public void StopCatastrophe()
     {
         IsActive = false;
-        Timer = 0;
+        TimerResolution = 0;
         MoinsCatastrophe = ECatastrophe.None;
         PlusCatastrophe = ECatastrophe.None;
 

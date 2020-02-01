@@ -53,7 +53,6 @@ public class CameraZoom : MonoBehaviour {
                 {
                     if (colliderObject.GetComponent<Zones>().CurrentCatastrophe.IsActive)
                     {
-                        Debug.Log(nameObject);
                         Vector3 vector = new Vector3
                         {
                             x = colliderObject.transform.position.x,

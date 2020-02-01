@@ -24,9 +24,9 @@ public class Zones : MonoBehaviour, IPointerClickHandler
     
     void FixedUpdate()
     {
-        if (CurrentCatastrophe != null)
+        if (CurrentCatastrophe.IsActive)
         {
-            if (NextTimeCatastropheDamage <= Time.time && CurrentCatastrophe.IsActive)
+            if (NextTimeCatastropheDamage <= Time.time)
             {
                 TakeDamage();
             }
@@ -42,7 +42,7 @@ public class Zones : MonoBehaviour, IPointerClickHandler
     {
         List<ECatastrophe> EnumValues = Enum.GetValues(typeof(ECatastrophe)).Cast<ECatastrophe>().ToList();
         CurrentCatastrophe.LaunchCatastrophe(EnumValues[UnityEngine.Random.Range(1, EnumValues.Count)], this);
-        NextTimeCatastropheDamage = Time.time + CurrentCatastrophe.Timer;
+        NextTimeCatastropheDamage = Time.time + CurrentCatastrophe.TimerDegats;
     }
     public void TakeDamage()
     {
