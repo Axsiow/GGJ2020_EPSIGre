@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlanetManager : MonoBehaviour
 {
     public int hp;
-    public List<Zones> zoneList;
+    public List<GameObject> zoneList;
 
     public void TakeDamage()
     {

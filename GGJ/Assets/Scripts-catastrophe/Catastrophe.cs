@@ -102,28 +102,34 @@ public class Catastrophe : MonoBehaviour, ICatastrophe
 
     private void PlayPrefabs(GameObject prefab)
     {
-        Vector3 vector3 = new Vector3(GetComponent<Transform>().position.x, GetComponent<Transform>().position.y, GetComponent<Transform>().position.z);
-        vector3.x += 2;
-        Prefabs.Add(Instantiate(prefab, vector3, Quaternion.identity));
-        vector3.x += 2;
-        Prefabs.Add(Instantiate(prefab, vector3, Quaternion.identity));
-        vector3.x += 2;
-        Prefabs.Add(Instantiate(prefab, vector3, Quaternion.identity));
-        vector3.x += 2;
-        Prefabs.Add(Instantiate(prefab, vector3, Quaternion.identity));
-        vector3.x += 2;
-        Prefabs.Add(Instantiate(prefab, vector3, Quaternion.identity));
-        vector3.x += 2;
-        Prefabs.Add(Instantiate(prefab, vector3, Quaternion.identity));
-        vector3.x += 2;
-        Prefabs.Add(Instantiate(prefab, vector3, Quaternion.identity));
-        vector3.x += 2;
-        Prefabs.Add(Instantiate(prefab, vector3, Quaternion.identity));
-        vector3.x += 2;
-        Prefabs.Add(Instantiate(prefab, vector3, Quaternion.identity));
-        vector3.x += 2;
-        Prefabs.Add(Instantiate(prefab, vector3, Quaternion.identity));
-        vector3.x += 2;
+        Vector3 vector3 = new Vector3(MeshRenderer.bounds.center.x, MeshRenderer.bounds.center.y, MeshRenderer.bounds.center.z +MeshRenderer.bounds.extents.z);
+        GameObject loul = Instantiate(prefab, vector3, Quaternion.identity);
+        loul.transform.eulerAngles = new Vector3(
+            loul.transform.eulerAngles.x + 90,
+            loul.transform.eulerAngles.y,
+            loul.transform.eulerAngles.z
+        );
+        loul.transform.SetParent(transform);
+        Prefabs.Add(loul);
+        //vector3.x += 2;
+        //prefabs.add(instantiate(prefab, vector3, quaternion.identity));
+        //vector3.x += 2;
+        //prefabs.add(instantiate(prefab, vector3, quaternion.identity));
+        //vector3.x += 2;
+        //prefabs.add(instantiate(prefab, vector3, quaternion.identity));
+        //vector3.x += 2;
+        //prefabs.add(instantiate(prefab, vector3, quaternion.identity));
+        //vector3.x += 2;
+        //prefabs.add(instantiate(prefab, vector3, quaternion.identity));
+        //vector3.x += 2;
+        //prefabs.add(instantiate(prefab, vector3, quaternion.identity));
+        //vector3.x += 2;
+        //prefabs.add(instantiate(prefab, vector3, quaternion.identity));
+        //vector3.x += 2;
+        //prefabs.add(instantiate(prefab, vector3, quaternion.identity));
+        //vector3.x += 2;
+        //prefabs.add(instantiate(prefab, vector3, quaternion.identity));
+        //vector3.x += 2;
     }
 
     private void getMoinsCatastrophe()
