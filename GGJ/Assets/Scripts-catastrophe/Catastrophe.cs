@@ -82,18 +82,16 @@ public class Catastrophe : MonoBehaviour, ICatastrophe
                 PlayPrefabs(gameObject1);
                 break;
             case ECatastrophe.Inondation:
-                Material material2 = AssetDatabase.LoadAssetAtPath<Material>("Assets/Imports-catastrophes/Resources/Water.mat");
-                MeshRenderer.enabled = true;
-                MeshRenderer.material = material2;
+                GameObject gameObject5 = Resources.Load("Rain1") as GameObject;
+                PlayPrefabs(gameObject5);
                 break;
             case ECatastrophe.Tornade:
                 GameObject gameObject2 = Resources.Load("Tornade1") as GameObject;
                 PlayPrefabs(gameObject2);
                 break;
             case ECatastrophe.Glaciation:
-                Material material5 = AssetDatabase.LoadAssetAtPath<Material>("Assets/Imports-catastrophes/Resources/Ice1.mat");
-                MeshRenderer.enabled = true;
-                MeshRenderer.material = material5;
+                GameObject gameObject4 = Resources.Load("Snow1") as GameObject;
+                PlayPrefabs(gameObject4);
                 break;
             case ECatastrophe.Typhon:
                 GameObject gameObject3 = Resources.Load("Tornade2") as GameObject;
