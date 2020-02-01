@@ -89,20 +89,12 @@ public class Catastrophe : MonoBehaviour, ICatastrophe
                 GameObject gameObject2 = Resources.Load("Tornade1") as GameObject;
                 PlayPrefabs(gameObject2);
                 break;
-            case ECatastrophe.Glaciation:
-                GameObject gameObject4 = Resources.Load("Snow1") as GameObject;
-                PlayPrefabs(gameObject4);
-                break;
-            case ECatastrophe.Typhon:
-                GameObject gameObject3 = Resources.Load("Tornade2") as GameObject;
-                PlayPrefabs(gameObject3);
-                break;
         }
     }
 
     private void PlayPrefabs(GameObject prefab)
     {
-        Vector3 vector3 = new Vector3(MeshRenderer.bounds.center.x, MeshRenderer.bounds.center.y, MeshRenderer.bounds.center.z +MeshRenderer.bounds.extents.z);
+        Vector3 vector3 = new Vector3(MeshRenderer.bounds.center.x, MeshRenderer.bounds.center.y, MeshRenderer.bounds.center.z );
         GameObject loul = Instantiate(prefab, vector3, Quaternion.identity);
         loul.transform.eulerAngles = new Vector3(
             loul.transform.eulerAngles.x + 90,
@@ -111,25 +103,6 @@ public class Catastrophe : MonoBehaviour, ICatastrophe
         );
         loul.transform.SetParent(transform);
         Prefabs.Add(loul);
-        //vector3.x += 2;
-        //prefabs.add(instantiate(prefab, vector3, quaternion.identity));
-        //vector3.x += 2;
-        //prefabs.add(instantiate(prefab, vector3, quaternion.identity));
-        //vector3.x += 2;
-        //prefabs.add(instantiate(prefab, vector3, quaternion.identity));
-        //vector3.x += 2;
-        //prefabs.add(instantiate(prefab, vector3, quaternion.identity));
-        //vector3.x += 2;
-        //prefabs.add(instantiate(prefab, vector3, quaternion.identity));
-        //vector3.x += 2;
-        //prefabs.add(instantiate(prefab, vector3, quaternion.identity));
-        //vector3.x += 2;
-        //prefabs.add(instantiate(prefab, vector3, quaternion.identity));
-        //vector3.x += 2;
-        //prefabs.add(instantiate(prefab, vector3, quaternion.identity));
-        //vector3.x += 2;
-        //prefabs.add(instantiate(prefab, vector3, quaternion.identity));
-        //vector3.x += 2;
     }
 
     private void getMoinsCatastrophe()
@@ -140,16 +113,10 @@ public class Catastrophe : MonoBehaviour, ICatastrophe
                 MoinsCatastrophe = ECatastrophe.Feu;
                 break;
             case ECatastrophe.Inondation:
-                MoinsCatastrophe = ECatastrophe.Glaciation;
+                MoinsCatastrophe = ECatastrophe.Tornade;
                 break;
             case ECatastrophe.Tornade:
-                MoinsCatastrophe = ECatastrophe.Typhon;
-                break;
-            case ECatastrophe.Glaciation:
                 MoinsCatastrophe = ECatastrophe.Inondation;
-                break;
-            case ECatastrophe.Typhon:
-                MoinsCatastrophe = ECatastrophe.Tornade;
                 break;
         }
     }
@@ -166,12 +133,6 @@ public class Catastrophe : MonoBehaviour, ICatastrophe
                 break;
             case ECatastrophe.Tornade:
                 PlusCatastrophe = ECatastrophe.Inondation;
-                break;
-            case ECatastrophe.Typhon:
-                PlusCatastrophe = ECatastrophe.Feu;
-                break;
-            case ECatastrophe.Glaciation:
-                PlusCatastrophe = ECatastrophe.Feu;
                 break;
         }
     }
