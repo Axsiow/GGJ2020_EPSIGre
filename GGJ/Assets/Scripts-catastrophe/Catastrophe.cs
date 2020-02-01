@@ -28,11 +28,6 @@ public class Catastrophe : MonoBehaviour
 
     #region Public Methods
 
-    public void Start()
-    {
-        Debug.Log(MyGameObject.name);
-        Debug.Log(gameObject.name);
-    }
 
     public void DeclencheMoinsCatastrophe()
     {
