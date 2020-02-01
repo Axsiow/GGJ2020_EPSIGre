@@ -52,6 +52,7 @@ public class sliderScript : MonoBehaviour
             var camera = Camera.main.GetComponent<CameraZoom>();
             camera.transform.position = camera.positionCamera;
             camera.Planete.GetComponent<EarthRotate>().IsRotating = true;
+            camera.Planete.GetComponent<EarthRotateMouse>().IsFocus = false;
             gameObject.SetActive(false);
         }
     }

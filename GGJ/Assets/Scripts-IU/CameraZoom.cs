@@ -65,6 +65,8 @@ public class CameraZoom : MonoBehaviour {
                         var slider = te.SliderPrefab;
                         slider.SetActive(true);
                         slider.GetComponent<sliderScript>().SetUp(colliderObject.GetComponent<Zones>().CurrentCatastrophe);
+
+                        Planete.GetComponent<EarthRotateMouse>().IsFocus = true;
                     }
                 }
             }
