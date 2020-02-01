@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,28 +25,6 @@ public class sliderScript : MonoBehaviour
 
     public Catastrophe cata;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        valeur = 0;
-        mainSlider.value = valeur;
-        pasValeur = true;
-        score.text = "Score : ";
-        scoreResulFinal.text = "";
-        sliderStop = false;
-
-
-        speed = Random.Range(5.0f, 50.0f);
-        bornePas = Random.Range(25.0f, 200.0f);
-        borneBas = Random.Range(10.0f, 790.0f);
-        borneHaut = borneBas + bornePas;
-
-        hautSlider.value = borneHaut;
-        basSlider.value = borneBas;
-        timerCata = 600;
-        timer.text = "Timer :" + timerCata;
-    }
-
     // Update is called once per frame
     void Update()
     {   
@@ -69,7 +48,34 @@ public class sliderScript : MonoBehaviour
                 scoreResulFinal.text = "Ok !";
                 cata.StopCatastrophe();
             }
+
+            var camera = Camera.main.GetComponent<CameraZoom>();
+            camera.transform.position = camera.positionCamera;
+            camera.Planete.GetComponent<EarthRotate>().IsRotating = true;
+            gameObject.SetActive(false);
         }
+    }
+
+    public void SetUp(Catastrophe catastrophe)
+    {
+        cata = catastrophe;
+        valeur = 0;
+        mainSlider.value = valeur;
+        pasValeur = true;
+        score.text = "Score : ";
+        scoreResulFinal.text = "";
+        sliderStop = false;
+
+
+        speed = Random.Range(5.0f, 50.0f);
+        bornePas = Random.Range(25.0f, 200.0f);
+        borneBas = Random.Range(10.0f, 790.0f);
+        borneHaut = borneBas + bornePas;
+
+        hautSlider.value = borneHaut;
+        basSlider.value = borneBas;
+        timerCata = 600;
+        timer.text = "Timer :" + timerCata;
     }
 
     void FixedUpdate()

@@ -4,48 +4,51 @@ using System;
 using UnityEditor;
 using UnityEngine;
 
-public class Catastrophe : MonoBehaviour, ICatastrophe
+public class Catastrophe : MonoBehaviour
 {
     #region Public Properties
 
     public ECatastrophe Type { get; set; }
 
     public GameObject MyGameObject;
-
-    public MeshRenderer MeshRenderer;
+    
+    private Sprite currentSprite;
 
     public bool IsActive { get; set; }
 
     public ECatastrophe MoinsCatastrophe { get; set; }
 
     public ECatastrophe PlusCatastrophe { get; set; }
+
+    private Zones Zone;
     
     public float Timer { get; set; }
-
-    private List<GameObject> Prefabs { get; set; }
 
     #endregion
 
     #region Public Methods
 
-    public void Start()
-    {
-        MeshRenderer = MyGameObject.GetComponent<MeshRenderer>();
-        Prefabs = new List<GameObject>();
-    }
 
     public void DeclencheMoinsCatastrophe()
     {
-        LaunchCatastrophe(MoinsCatastrophe);
+        StopCatastrophe();
+        getMoinsCatastrophe();
+        getPlusCatastrophe();
+        LaunchCatastrophe(MoinsCatastrophe, Zone);
     }
 
     public void DeclenchePlusCatastrophe()
     {
-        LaunchCatastrophe(PlusCatastrophe);
+        StopCatastrophe();
+        getMoinsCatastrophe();
+        getPlusCatastrophe();
+        LaunchCatastrophe(PlusCatastrophe, Zone);
     }
 
-    public void LaunchCatastrophe(ECatastrophe type)
+    public void LaunchCatastrophe(ECatastrophe type, Zones zone)
     {
+        Zone = zone;
+
         IsActive = true;
         Type = type;
         Timer = 60.0F;
@@ -59,14 +62,12 @@ public class Catastrophe : MonoBehaviour, ICatastrophe
     {
         IsActive = false;
         Timer = 0;
-        Type = ECatastrophe.None;
         MoinsCatastrophe = ECatastrophe.None;
         PlusCatastrophe = ECatastrophe.None;
 
-        foreach (var prefab in Prefabs)
-        {
-            Destroy(prefab);
-        }
+        currentSprite = Resources.Load<Sprite>("blank");
+        var test = Zone.GetComponent<SpriteRenderer>();
+        GetComponent<SpriteRenderer>().sprite = currentSprite;
     }
 
     #endregion
@@ -78,50 +79,46 @@ public class Catastrophe : MonoBehaviour, ICatastrophe
         switch (Type)
         {
             case ECatastrophe.Feu:
-                Sprite sprite1 = Resources.Load<Sprite>("feu");
-                GetComponent<SpriteRenderer>().sprite = sprite1;
+                currentSprite = Resources.Load<Sprite>("feu");
+                GetComponent<SpriteRenderer>().sprite = currentSprite;
                 break;
             case ECatastrophe.Tornade:
-                Sprite sprite2 = Resources.Load<Sprite>("tornade");
-                GetComponent<SpriteRenderer>().sprite = sprite2;
+                currentSprite = Resources.Load<Sprite>("tornade");
+                GetComponent<SpriteRenderer>().sprite = currentSprite;
                 break;
             case ECatastrophe.Apocalypse:
-                Sprite sprite3 = Resources.Load<Sprite>("apocalypse");
-                GetComponent<SpriteRenderer>().sprite = sprite3;
+                currentSprite = Resources.Load<Sprite>("apocalypse");
+                GetComponent<SpriteRenderer>().sprite = currentSprite;
                 break;
             case ECatastrophe.Secheresse:
-                Sprite sprite4 = Resources.Load<Sprite>("secheresse");
-                GetComponent<SpriteRenderer>().sprite = sprite4;
+                currentSprite = Resources.Load<Sprite>("secheresse");
+                GetComponent<SpriteRenderer>().sprite = currentSprite;
                 break;
             case ECatastrophe.Glaciation:
-                Sprite sprite5 = Resources.Load<Sprite>("neige");
-                GetComponent<SpriteRenderer>().sprite = sprite5;
+                currentSprite = Resources.Load<Sprite>("neige");
+                GetComponent<SpriteRenderer>().sprite = currentSprite;
                 break;
         }
     }
-
-    //private void PlayPrefabs(GameObject prefab)
-    //{
-    //    Vector3 vector3 = new Vector3(MeshRenderer.bounds.center.x, MeshRenderer.bounds.center.y, MeshRenderer.bounds.center.z );
-    //    GameObject loul = Instantiate(prefab, vector3, Quaternion.identity);
-    //    loul.transform.eulerAngles = new Vector3(
-    //        loul.transform.eulerAngles.x + 90,
-    //        loul.transform.eulerAngles.y,
-    //        loul.transform.eulerAngles.z
-    //    );
-    //    loul.transform.SetParent(transform);
-    //    Prefabs.Add(loul);
-    //}
 
     private void getMoinsCatastrophe()
     {
         switch (Type)
         {
             case ECatastrophe.Feu:
-                MoinsCatastrophe = ECatastrophe.Feu;
+                MoinsCatastrophe = ECatastrophe.Secheresse;
                 break;
             case ECatastrophe.Tornade:
+                MoinsCatastrophe = ECatastrophe.Glaciation;
+                break;
+            case ECatastrophe.Apocalypse:
+                MoinsCatastrophe = ECatastrophe.Tornade;
+                break;
+            case ECatastrophe.Secheresse:
                 MoinsCatastrophe = ECatastrophe.Feu;
+                break;
+            case ECatastrophe.Glaciation:
+                MoinsCatastrophe = ECatastrophe.Apocalypse;
                 break;
         }
     }
@@ -131,10 +128,19 @@ public class Catastrophe : MonoBehaviour, ICatastrophe
         switch (Type)
         {
             case ECatastrophe.Feu:
-                PlusCatastrophe = ECatastrophe.Tornade;
+                PlusCatastrophe = ECatastrophe.Glaciation;
                 break;
             case ECatastrophe.Tornade:
+                PlusCatastrophe = ECatastrophe.Apocalypse;
+                break;
+            case ECatastrophe.Apocalypse:
+                PlusCatastrophe = ECatastrophe.Secheresse;
+                break;
+            case ECatastrophe.Secheresse:
                 PlusCatastrophe = ECatastrophe.Feu;
+                break;
+            case ECatastrophe.Glaciation:
+                PlusCatastrophe = ECatastrophe.Tornade;
                 break;
         }
     }
