@@ -12,7 +12,8 @@ public class EarthRotateMouse : MonoBehaviour
 
             float rotationX = Input.GetAxis("Mouse X") * maxSpeed * Mathf.Deg2Rad;
             transform.RotateAround(Vector3.up, -rotationX);
-
+            
+            
             
         }
     }
