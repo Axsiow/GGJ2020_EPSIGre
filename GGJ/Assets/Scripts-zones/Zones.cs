@@ -14,6 +14,12 @@ public class Zones : MonoBehaviour
     public Catastrophe CurrentCatastrophe;
     private float NextTimeCatastropheDamage;
 
+    private void Start()
+    {
+        var test = SliderPrefab.GetComponent<sliderScript>().cata;
+        SliderPrefab.GetComponent<sliderScript>().cata = CurrentCatastrophe;
+        NextTimeCatastrophes = Time.time + TimeBetweenCatastrophe;
+    }
 
     
     void FixedUpdate()

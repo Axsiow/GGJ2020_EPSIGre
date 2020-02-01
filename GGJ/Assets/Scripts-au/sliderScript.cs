@@ -13,12 +13,16 @@ public class sliderScript : MonoBehaviour
     private float borneHaut;
     private float borneBas;
     private float bornePas;
+    private float timerCata;
 
     public Text score;
     public Text scoreResulFinal;
+    public Text timer;
     public Slider mainSlider;
     public Slider hautSlider;
     public Slider basSlider;
+
+    public Catastrophe cata;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +42,8 @@ public class sliderScript : MonoBehaviour
 
         hautSlider.value = borneHaut;
         basSlider.value = borneBas;
+        timerCata = 600;
+        timer.text = "Timer :" + timerCata;
     }
 
     // Update is called once per frame
@@ -51,14 +57,17 @@ public class sliderScript : MonoBehaviour
             if(valeur >= borneHaut)
             {
                 scoreResulFinal.text = "Trop haut !";
+                cata.DeclenchePlusCatastrophe();
             }
             else if(valeur < borneBas)
             {
                 scoreResulFinal.text = "Trop bas !";
+                cata.DeclencheMoinsCatastrophe();
             }
             else
             {
                 scoreResulFinal.text = "Ok !";
+                cata.StopCatastrophe();
             }
         }
     }
@@ -72,6 +81,14 @@ public class sliderScript : MonoBehaviour
         else if(valeur < 0)
         {
             valeur = 0;
+        }
+
+        timerCata = timerCata - 1;
+        timer.text = "Score :" + timerCata;
+        if (timerCata <= 0)
+        {
+            sliderStop = true;
+            cata.DeclenchePlusCatastrophe();
         }
 
         if (sliderStop == false)
