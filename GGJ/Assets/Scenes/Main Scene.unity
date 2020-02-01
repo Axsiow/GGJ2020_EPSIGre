@@ -645,33 +645,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1925632434}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c2a91c453baab544abe4052050814b9, type: 3}
+  m_Script: {fileID: 11500000, guid: 634160ace6bd5a2449a79233193394dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentZoom: 1
-  minZoom: 1
-  maxZoom: 3
-  zoomTarget: 0
-  customPosition: {x: 0.5, y: 0.5}
-  zoomType: 0
-  elasticLimit: 2
-  elasticDamping: 0.1
-  zoomMode: 0
-  zoomIn: {fileID: 0}
-  zoomInPosition: {x: 0.5, y: 0.5}
-  zoomInIncrement: 0.5
-  zoomInSmoothing: 0.1
-  zoomOut: {fileID: 0}
-  zoomOutPosition: {x: 0.5, y: 0.5}
-  zoomOutIncrement: 0.5
-  zoomOutSmoothing: 0.1
-  zoomSlider: {fileID: 0}
-  zoomView: {fileID: 0}
-  zoomMovement: 1
-  doubleTap: 1
-  doubleTapTargetTime: 0.25
-  scrollWheelIncrement: 0.5
-  scrollWheelSmoothing: 0.1
+  distanceMin: 0
+  distanceMax: 100
+  zoomSpeed: 20
 --- !u!114 &1925632439
 MonoBehaviour:
   m_ObjectHideFlags: 0
