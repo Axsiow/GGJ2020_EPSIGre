@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlanetManager : MonoBehaviour
 {
@@ -29,10 +30,12 @@ public class PlanetManager : MonoBehaviour
         if (TimeToSurvive <= Time.time)
         {
             Debug.Log("Win");
+            SceneManager.LoadScene("WinScene");
         }
         else if (hp <= 0)
         {
             Debug.Log("Loose");
+            SceneManager.LoadScene("LooseScene");
         }
         else
         {
