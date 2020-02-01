@@ -9,9 +9,10 @@ public class sliderScript : MonoBehaviour
     private bool pasValeur;
     private bool sliderStop;
 
-    public float speed;
-    public float borneHaut;
-    public float borneBas;
+    private float speed;
+    private float borneHaut;
+    private float borneBas;
+    private float bornePas;
 
     public Text score;
     public Text scoreResulFinal;
@@ -28,6 +29,12 @@ public class sliderScript : MonoBehaviour
         score.text = "Score : ";
         scoreResulFinal.text = "";
         sliderStop = false;
+
+
+        speed = Random.Range(5.0f, 50.0f);
+        bornePas = Random.Range(25.0f, 200.0f);
+        borneBas = Random.Range(10.0f, 790.0f);
+        borneHaut = borneBas + bornePas;
 
         hautSlider.value = borneHaut;
         basSlider.value = borneBas;
