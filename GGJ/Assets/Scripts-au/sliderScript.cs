@@ -84,7 +84,7 @@ public class sliderScript : MonoBehaviour
         }
 
         timerCata = timerCata - 1;
-        timer.text = "Score :" + timerCata;
+        timer.text = "Timer :" + timerCata;
         if (timerCata <= 0)
         {
             sliderStop = true;
