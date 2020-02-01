@@ -90,11 +90,6 @@ public class Catastrophe : MonoBehaviour, ICatastrophe
                 GameObject gameObject2 = Resources.Load("Tornade1") as GameObject;
                 PlayPrefabs(gameObject2);
                 break;
-            case ECatastrophe.Secheresse:
-                Material material4 = AssetDatabase.LoadAssetAtPath<Material>("Assets/Imports-catastrophes/Resources/Sand.mat");
-                MeshRenderer.enabled = true;
-                MeshRenderer.material = material4;
-                break;
             case ECatastrophe.Glaciation:
                 Material material5 = AssetDatabase.LoadAssetAtPath<Material>("Assets/Imports-catastrophes/Resources/Ice1.mat");
                 MeshRenderer.enabled = true;
@@ -138,16 +133,13 @@ public class Catastrophe : MonoBehaviour, ICatastrophe
         switch (Type)
         {
             case ECatastrophe.Feu:
-                MoinsCatastrophe = ECatastrophe.Secheresse;
+                MoinsCatastrophe = ECatastrophe.Feu;
                 break;
             case ECatastrophe.Inondation:
                 MoinsCatastrophe = ECatastrophe.Glaciation;
                 break;
             case ECatastrophe.Tornade:
                 MoinsCatastrophe = ECatastrophe.Typhon;
-                break;
-            case ECatastrophe.Secheresse:
-                MoinsCatastrophe = ECatastrophe.Feu;
                 break;
             case ECatastrophe.Glaciation:
                 MoinsCatastrophe = ECatastrophe.Inondation;
@@ -166,16 +158,13 @@ public class Catastrophe : MonoBehaviour, ICatastrophe
                 PlusCatastrophe = ECatastrophe.Inondation;
                 break;
             case ECatastrophe.Inondation:
-                PlusCatastrophe = ECatastrophe.Secheresse;
+                PlusCatastrophe = ECatastrophe.Feu;
                 break;
             case ECatastrophe.Tornade:
                 PlusCatastrophe = ECatastrophe.Inondation;
                 break;
             case ECatastrophe.Typhon:
-                PlusCatastrophe = ECatastrophe.Secheresse;
-                break;
-            case ECatastrophe.Secheresse:
-                PlusCatastrophe = ECatastrophe.Inondation;
+                PlusCatastrophe = ECatastrophe.Feu;
                 break;
             case ECatastrophe.Glaciation:
                 PlusCatastrophe = ECatastrophe.Feu;
