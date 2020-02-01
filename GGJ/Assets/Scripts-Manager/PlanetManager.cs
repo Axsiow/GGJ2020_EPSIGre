@@ -19,8 +19,13 @@ public class PlanetManager : MonoBehaviour
         if (NextTimeCatastrophes <= Time.time)
         {
             var catastropheZone = zoneList[Random.Range(0, zoneList.Count)].GetComponent<Zones>();
-            catastropheZone.StartCatastrophe();
-            NextTimeCatastrophes = Time.time + TimeBetweenCatastrophe;
+            if (!catastropheZone.CurrentCatastrophe.IsActive)
+            {
+                catastropheZone.StartCatastrophe();
+                NextTimeCatastrophes = Time.time + TimeBetweenCatastrophe;
+            }
+            
+            
         }
     }
     public void TakeDamage()

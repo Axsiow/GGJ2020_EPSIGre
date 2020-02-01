@@ -341,6 +341,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.981
       objectReference: {fileID: 0}
+    - target: {fileID: 6456343001917187696, guid: 1885272d02befb3429e46bfb5a828167,
+        type: 3}
+      propertyPath: TimeBetweenCatastrophe
+      value: 120
+      objectReference: {fileID: 0}
     - target: {fileID: 6662581179350786531, guid: 1885272d02befb3429e46bfb5a828167,
         type: 3}
       propertyPath: m_Enabled
