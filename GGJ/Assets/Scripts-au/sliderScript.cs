@@ -6,12 +6,18 @@ using UnityEngine.UI;
 public class sliderScript : MonoBehaviour
 {
     private float valeur;
-    public float speed;
     private bool pasValeur;
     private bool sliderStop;
+
+    public float speed;
+    public float borneHaut;
+    public float borneBas;
+
     public Text score;
     public Text scoreResulFinal;
     public Slider mainSlider;
+    public Slider hautSlider;
+    public Slider basSlider;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +28,9 @@ public class sliderScript : MonoBehaviour
         score.text = "Score : ";
         scoreResulFinal.text = "";
         sliderStop = false;
+
+        hautSlider.value = borneHaut;
+        basSlider.value = borneBas;
     }
 
     // Update is called once per frame
@@ -32,11 +41,11 @@ public class sliderScript : MonoBehaviour
             score.text = "Score : " + valeur;
             sliderStop = true;
 
-            if(valeur >= 600)
+            if(valeur >= borneHaut)
             {
                 scoreResulFinal.text = "Trop haut !";
             }
-            else if(valeur < 500)
+            else if(valeur < borneBas)
             {
                 scoreResulFinal.text = "Trop bas !";
             }
