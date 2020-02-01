@@ -7,12 +7,21 @@ public class PlanetManager : MonoBehaviour
     public int hp;
     public List<GameObject> zoneList;
 
-    private Rigidbody rb;
-    private Vector3 com;
+    public float TimeBetweenCatastrophe;
+    public float NextTimeCatastrophes;
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        rb.centerOfMass = com;
+        NextTimeCatastrophes = Time.time + TimeBetweenCatastrophe;
+    }
+
+    private void FixedUpdate()
+    {
+        if (NextTimeCatastrophes <= Time.time)
+        {
+            var catastropheZone = zoneList[Random.Range(0, zoneList.Count)].GetComponent<Zones>();
+            catastropheZone.StartCatastrophe();
+            NextTimeCatastrophes = Time.time + TimeBetweenCatastrophe;
+        }
     }
     public void TakeDamage()
     {

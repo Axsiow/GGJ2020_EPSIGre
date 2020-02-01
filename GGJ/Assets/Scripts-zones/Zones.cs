@@ -8,26 +8,16 @@ public class Zones : MonoBehaviour
 {
 
     public ICatastrophe CatastrophesList;
-    public float TimeBetweenCatastrophe;
-    public float NextTimeCatastrophes;
     public GameObject SliderPrefab;
     public GameObject planet;
 
     public Catastrophe CurrentCatastrophe;
     private float NextTimeCatastropheDamage;
 
-    private void Start()
-    {
-        NextTimeCatastrophes = Time.time + TimeBetweenCatastrophe;
-    }
 
     
     void FixedUpdate()
     {
-        if (TimeBetweenCatastrophe <= Time.time && CurrentCatastrophe.IsActive==false)
-        {
-            StartCatastrophe();
-        }
         if (CurrentCatastrophe != null)
         {
             if (NextTimeCatastropheDamage <= Time.time && CurrentCatastrophe.IsActive)

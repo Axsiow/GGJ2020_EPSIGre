@@ -111,6 +111,13 @@ MonoBehaviour:
   - {fileID: 848618037951358026}
   - {fileID: 261927131214022340}
   - {fileID: 1681288032662888518}
+  - {fileID: 6951321042994833047}
+  - {fileID: 8566176731741327818}
+  - {fileID: 5707816934752543287}
+  - {fileID: 5523028498151872524}
+  - {fileID: 7492188535614459325}
+  TimeBetweenCatastrophe: 10
+  NextTimeCatastrophes: 10
 --- !u!114 &758700583120826849
 MonoBehaviour:
   m_ObjectHideFlags: 0
