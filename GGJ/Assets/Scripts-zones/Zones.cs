@@ -18,7 +18,6 @@ public class Zones : MonoBehaviour
     {
         var test = SliderPrefab.GetComponent<sliderScript>().cata;
         SliderPrefab.GetComponent<sliderScript>().cata = CurrentCatastrophe;
-        NextTimeCatastrophes = Time.time + TimeBetweenCatastrophe;
     }
 
     
