@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class Zones : MonoBehaviour
+public class Zones : MonoBehaviour, IPointerClickHandler
 {
 
     public ICatastrophe CatastrophesList;
@@ -32,11 +33,11 @@ public class Zones : MonoBehaviour
         }
         
     }
-
-    private void OnMouseDown()
+    void OnClick()
     {
-        Debug.Log("test");
+        Debug.Log("what are you ?");
     }
+
     public void StartCatastrophe()
     {
         List<ECatastrophe> EnumValues = Enum.GetValues(typeof(ECatastrophe)).Cast<ECatastrophe>().ToList();
@@ -47,5 +48,10 @@ public class Zones : MonoBehaviour
     {
         planet.GetComponent<PlanetManager>().TakeDamage();
         //TODO : make the bigger entity (holding the hp) taking damage
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        Debug.Log("what are you ?");
     }
 }

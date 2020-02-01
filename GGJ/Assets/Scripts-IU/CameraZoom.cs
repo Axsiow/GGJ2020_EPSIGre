@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraZoom : MonoBehaviour {
 
     public float distanceMin;
+    public GameObject Planete;
     public float distanceMax;
     public float zoomSpeed;
 
@@ -35,6 +36,32 @@ public class CameraZoom : MonoBehaviour {
             //We shouldn't be allowed to zoom out more than distanceMax
             if (Mathf.Floor (transform.position.y + moveDirection.y) < distanceMax) {
                 transform.Translate (moveDirection, Space.Self);
+            }
+        }
+
+        if (Input.GetMouseButtonDown(0) && Planete.GetComponent<EarthRotate>().IsRotating)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))
+            {
+                var colliderObject = hit.collider.gameObject;
+                var nameObject = colliderObject.name;
+                if (nameObject != "lowpoly_earth")
+                {
+                    if (colliderObject.GetComponent<Zones>().CurrentCatastrophe.IsActive)
+                    {
+                        Debug.Log(nameObject);
+                        Vector3 vector = new Vector3
+                        {
+                            x = colliderObject.transform.position.x,
+                            y = colliderObject.transform.position.y,
+                            z = colliderObject.transform.position.z
+                        };
+                        transform.Translate(vector, Space.Self);
+                        Planete.GetComponent<EarthRotate>().IsRotating = false;
+                    }
+                }
             }
         }
     }
