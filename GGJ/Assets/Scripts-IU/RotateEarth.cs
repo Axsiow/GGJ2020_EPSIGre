@@ -6,10 +6,10 @@ using UnityEngine;
 
 public class RotateEarth : MonoBehaviour {
 
-    public float Angle;
+    public float IddleRotationSpeed;
 
     // Update is called once per frame
     void Update () {
-        this.transform.Rotate ( 0, Angle, 0, Space.Self);
+        this.transform.Rotate ( 0, IddleRotationSpeed, 0, Space.Self);
     }
 }
