@@ -6,12 +6,15 @@ public class EarthRotateMouse : MonoBehaviour
 {
     public float maxSpeed;
 
-    void Update()
-    {
-        if (Input.GetMouseButton(0))
-        {
+    void Update() {
+
+        if (Input.GetMouseButton(0)) {
+
             float rotationX = Input.GetAxis("Mouse X") * maxSpeed * Mathf.Deg2Rad;
             transform.RotateAround(Vector3.up, -rotationX);
+
+            float rotationY = Input.GetAxis ("Mouse Y") * maxSpeed * Mathf.Deg2Rad;
+            transform.RotateAround (Vector3.up, -rotationY);
         }
     }
 }
