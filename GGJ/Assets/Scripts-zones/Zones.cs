@@ -11,6 +11,7 @@ public class Zones : MonoBehaviour
     public float TimeBetweenCatastrophe;
     public float NextTimeCatastrophes;
     public GameObject SliderPrefab;
+    public GameObject planet;
 
     public Catastrophe CurrentCatastrophe;
     private float NextTimeCatastropheDamage;
@@ -46,6 +47,7 @@ public class Zones : MonoBehaviour
     }
     public void TakeDamage()
     {
+        planet.GetComponent<PlanetManager>().TakeDamage();
         //TODO : make the bigger entity (holding the hp) taking damage
     }
 }
