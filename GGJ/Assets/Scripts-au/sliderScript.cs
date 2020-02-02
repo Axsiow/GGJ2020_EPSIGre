@@ -16,12 +16,16 @@ public class sliderScript : MonoBehaviour
     private float bornePas;
     private float timerCata;
 
+    private float curentMusicDangerTime;
+
     public Text score;
     public Text scoreResulFinal;
     public Text timer;
     public Slider mainSlider;
     public Slider hautSlider;
     public Slider basSlider;
+
+    private AudioSource correct;
 
     public Catastrophe cata;
 
@@ -47,9 +51,21 @@ public class sliderScript : MonoBehaviour
             {
                 scoreResulFinal.text = "Ok !";
                 cata.StopCatastrophe();
+                correct.Play();
+                DontDestroyOnLoad(correct);
             }
 
             var camera = Camera.main.GetComponent<CameraZoom>();
+
+            /*Musique*/
+
+            AudioControlerScript.Instance.gameObject.GetComponent<AudioSource>().time = AudioControlerScript.Instance.curentNormalTime;
+            AudioControlerScript.Instance.gameObject.GetComponent<AudioSource>().Play();
+
+            AudioDangerControlerScript.Instance.curentDangerTime = AudioDangerControlerScript.Instance.gameObject.GetComponent<AudioSource>().time;
+            AudioDangerControlerScript.Instance.gameObject.GetComponent<AudioSource>().Pause();
+            /*******/
+
             camera.transform.position = camera.positionCamera;
             camera.Planete.GetComponent<EarthRotate>().IsRotating = true;
             camera.Planete.GetComponent<EarthRotateMouse>().IsFocus = false;
@@ -66,6 +82,7 @@ public class sliderScript : MonoBehaviour
         score.text = "Score : ";
         scoreResulFinal.text = "";
         sliderStop = false;
+        correct = GetComponent<AudioSource>();
 
 
         speed = Random.Range(5.0f, 50.0f);
