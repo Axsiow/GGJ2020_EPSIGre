@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class sliderScript : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class sliderScript : MonoBehaviour
     private float curentMusicDangerTime;
 
     public Text scoreResulFinal;
-    public Text timer;
+    public TMP_Text timer;
     public Slider mainSlider;
     public Slider hautSlider;
     public Slider basSlider;

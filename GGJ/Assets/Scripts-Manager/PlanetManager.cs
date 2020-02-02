@@ -6,11 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class PlanetManager : MonoBehaviour
 {
-    public TMP_Text LifeText; 
+    public GameObject LifeContainer; 
     public TMP_Text TimerText;
     
     public int hp;
     public List<GameObject> zoneList;
+
+    public List<GameObject> HpObjList;
+    public GameObject HpPrefab;
 
     public float TimeBetweenCatastrophe;
     public float NextTimeCatastrophes;
@@ -18,13 +21,16 @@ public class PlanetManager : MonoBehaviour
     public float TimeToSurvive;
     private void Start()
     {
+        for (int i =0; i < hp; i++)
+        {
+            HpObjList.Add( Instantiate(HpPrefab, LifeContainer.transform));
+        }
         TimeToSurvive += Time.time;
         NextTimeCatastrophes = Time.time + TimeBetweenCatastrophe;
     }
 
     private void FixedUpdate()
     {
-        LifeText.text = "HP : " + hp;
         TimerText.text = (int)((TimeToSurvive - Time.time)/60)+" min "+ (int)((TimeToSurvive - Time.time) % 60)+" sec";
 
         if (TimeToSurvive <= Time.time)
@@ -56,6 +62,8 @@ public class PlanetManager : MonoBehaviour
     public void TakeDamage()
     {
         hp -= 1;
+        Destroy(HpObjList[HpObjList.Count - 1]);
+        HpObjList.RemoveAt(HpObjList.Count - 1);
         Debug.Log("Oh no ! you take damage !");
     }
 }

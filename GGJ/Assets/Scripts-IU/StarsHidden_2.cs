@@ -8,14 +8,14 @@ public class StarsHidden_2 : MonoBehaviour {
     public float alpha;
     public bool sw;
     public Color dudescolor;
-    public float delay = 1f;
+    public float delay { get; set; } = 1f;
     // Use this for initialization
 
     void Start () {
         //must have a transparent shader To work !!!
-        dude.GetComponent<Renderer> ().material.shader = Shader.Find ("Transparent/Diffuse");
+        dude.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Stars Small_1");
         //lets remember the color we started with!!!!
-        dudescolor = dude.GetComponent<Renderer> ().material.color;
+        dudescolor = dude.GetComponent<SpriteRenderer> ().material.color;
     }
 
     void Update () {
@@ -31,7 +31,7 @@ public class StarsHidden_2 : MonoBehaviour {
             }
             //assign the float to your gameobjects alpha!!!
             dudescolor.a = alpha;
-            dude.GetComponent<Renderer> ().material.color = dudescolor;
+            dude.GetComponent<SpriteRenderer> ().material.color = dudescolor;
         }
     }
 }

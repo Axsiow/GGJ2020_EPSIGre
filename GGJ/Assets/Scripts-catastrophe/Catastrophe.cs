@@ -55,7 +55,7 @@ public class Catastrophe : MonoBehaviour
 
         IsActive = true;
         Type = type;
-        TimerResolution = 30.0F;
+        TimerResolution = 15;
         TimerDegats = 90.0F;
 
         getMoinsCatastrophe();
@@ -71,7 +71,6 @@ public class Catastrophe : MonoBehaviour
         PlusCatastrophe = ECatastrophe.None;
 
         currentSprite = Resources.Load<Sprite>("blank");
-        var test = Zone.GetComponent<SpriteRenderer>();
         GetComponent<SpriteRenderer>().sprite = currentSprite;
     }
 
