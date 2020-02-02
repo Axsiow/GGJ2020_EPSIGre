@@ -18,7 +18,6 @@ public class sliderScript : MonoBehaviour
 
     private float curentMusicDangerTime;
 
-    public Text score;
     public Text scoreResulFinal;
     public Text timer;
     public Slider mainSlider;
@@ -34,7 +33,6 @@ public class sliderScript : MonoBehaviour
     {   
         if (Input.GetKeyDown("space") || Input.GetMouseButtonDown(0))
         {
-            score.text = "Score : " + valeur;
             sliderStop = true;
 
             if(valeur >= borneHaut)
@@ -79,7 +77,6 @@ public class sliderScript : MonoBehaviour
         valeur = 0;
         mainSlider.value = valeur;
         pasValeur = true;
-        score.text = "Score : ";
         scoreResulFinal.text = "";
         sliderStop = false;
         correct = GetComponent<AudioSource>();
@@ -93,7 +90,7 @@ public class sliderScript : MonoBehaviour
         hautSlider.value = borneHaut;
         basSlider.value = borneBas;
         timerCata = 600;
-        timer.text = "Timer :" + timerCata;
+        timer.text = "Timer : " + timerCata / 10;
     }
 
     void FixedUpdate()
@@ -108,7 +105,7 @@ public class sliderScript : MonoBehaviour
         }
 
         timerCata = timerCata - 1;
-        timer.text = "Timer :" + timerCata;
+        timer.text = "Timer : " + timerCata;
         if (timerCata <= 0)
         {
             sliderStop = true;
