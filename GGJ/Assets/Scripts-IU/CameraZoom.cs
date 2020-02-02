@@ -11,12 +11,15 @@ public class CameraZoom : MonoBehaviour {
     public float zoomSpeed;
     public Vector3 positionCamera;
 
+    private AudioSource aled;
+
     private float[] distances = new float[32];
     private Vector3 moveDirection = Vector3.zero;
 
     // Use this for initialization
     void Start () {
         positionCamera = transform.position;
+        aled = AudioControlerScript.Instance.gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -47,12 +50,20 @@ public class CameraZoom : MonoBehaviour {
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
+
                 var colliderObject = hit.collider.gameObject;
                 var nameObject = colliderObject.name;
                 if (nameObject != "lowpoly_earth")
                 {
                     if (colliderObject.GetComponent<Zones>().CurrentCatastrophe.IsActive)
                     {
+                        /*Pour la musique*/
+                        AudioControlerScript.Instance.curentNormalTime = aled.time;
+                        aled.Pause();
+                        AudioDangerControlerScript.Instance.gameObject.GetComponent<AudioSource>().time = AudioDangerControlerScript.Instance.curentDangerTime;
+                        AudioDangerControlerScript.Instance.gameObject.GetComponent<AudioSource>().Play();
+
+                        /****************/
                         Vector3 vector = new Vector3
                         {
                             x = colliderObject.transform.position.x,
@@ -67,6 +78,7 @@ public class CameraZoom : MonoBehaviour {
                         slider.GetComponent<sliderScript>().SetUp(colliderObject.GetComponent<Zones>().CurrentCatastrophe);
 
                         Planete.GetComponent<EarthRotateMouse>().IsFocus = true;
+
                     }
                 }
             }

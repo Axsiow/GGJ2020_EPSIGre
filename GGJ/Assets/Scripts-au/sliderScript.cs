@@ -16,7 +16,8 @@ public class sliderScript : MonoBehaviour
     private float bornePas;
     private float timerCata;
 
-    public Text score;
+    private float curentMusicDangerTime;
+
     public Text scoreResulFinal;
     public Text timer;
     public Slider mainSlider;
@@ -24,6 +25,8 @@ public class sliderScript : MonoBehaviour
     public Slider basSlider;
 
     public float TimeToFinish;
+    private AudioSource correct;
+
     public Catastrophe cata;
 
     // Update is called once per frame
@@ -31,7 +34,6 @@ public class sliderScript : MonoBehaviour
     {   
         if (Input.GetKeyDown("space") || Input.GetMouseButtonDown(0))
         {
-            score.text = "Score : " + valeur;
             sliderStop = true;
 
             if(valeur >= borneHaut)
@@ -45,9 +47,21 @@ public class sliderScript : MonoBehaviour
             else
             {
                 cata.StopCatastrophe();
+                correct.Play();
+                DontDestroyOnLoad(correct);
             }
 
             var camera = Camera.main.GetComponent<CameraZoom>();
+
+            /*Musique*/
+
+            AudioControlerScript.Instance.gameObject.GetComponent<AudioSource>().time = AudioControlerScript.Instance.curentNormalTime;
+            AudioControlerScript.Instance.gameObject.GetComponent<AudioSource>().Play();
+
+            AudioDangerControlerScript.Instance.curentDangerTime = AudioDangerControlerScript.Instance.gameObject.GetComponent<AudioSource>().time;
+            AudioDangerControlerScript.Instance.gameObject.GetComponent<AudioSource>().Pause();
+            /*******/
+
             camera.transform.position = camera.positionCamera;
             camera.Planete.GetComponent<EarthRotate>().IsRotating = true;
             camera.Planete.GetComponent<EarthRotateMouse>().IsFocus = false;
@@ -61,9 +75,9 @@ public class sliderScript : MonoBehaviour
         valeur = 0;
         mainSlider.value = valeur;
         pasValeur = true;
-        score.text = "Score : ";
         scoreResulFinal.text = "";
         sliderStop = false;
+        correct = GetComponent<AudioSource>();
 
 
         speed = Random.Range(5.0f, 50.0f);
